@@ -60,7 +60,7 @@ export const AuthProvider = (props: { children: React.ReactNode }) => {
 		})
 		const data = await response.json()
 		nookies.set({}, 'user-token', data.token, {
-			maxAge: 30 * 24 * 60 * 60 // 30 days
+			maxAge: 60 * 60 * 24 * 7 // 7 days
 		})
 		return data
 	}

@@ -24,7 +24,7 @@ async function register(req: NextApiRequest, res: NextApiResponse) {
 				})
 
 				if (userExists) {
-					return res.status(400).json({ error: 'Usuário indisponível' })
+					return res.status(400).json({ error: 'Conta já cadastrada' })
 				}
 
 				const salt = await bcrypt.genSalt(10)
@@ -38,7 +38,7 @@ async function register(req: NextApiRequest, res: NextApiResponse) {
 					}
 				})
 
-				res.status(201).json(user)
+				res.status(201).json({ message: 'Conta criada com sucesso' })
 			} catch (error) {
 				res.status(500).json({ error })
 			}

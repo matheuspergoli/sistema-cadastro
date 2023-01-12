@@ -13,25 +13,26 @@ import { toFormikValidationSchema } from 'zod-formik-adapter'
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const cookies = nookies.get(context)
 
-	if (cookies?.['user-token']) {
-		const { 'user-token': token } = cookies
-		try {
-			const verifyToken = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET as string)
-			return {
-				redirect: {
-					destination: '/dashboard',
-					permanent: false
-				}
-			}
-		} catch (error) {
-			return {
-				props: {}
-			}
+	if (!cookies['user-token']) {
+		return {
+			props: {}
 		}
 	}
 
-	return {
-		props: {}
+	const { 'user-token': token } = cookies
+
+	try {
+		const verifyToken = jwt.verify(token, process.env.NEXT_PUBLIC_JWT_SECRET as string)
+		return {
+			redirect: {
+				destination: '/dashboard',
+				permanent: false
+			}
+		}
+	} catch (error) {
+		return {
+			props: {}
+		}
 	}
 }
 
