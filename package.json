@@ -6,7 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"cypress:open": "cypress open"
 	},
 	"dependencies": {
 		"@prisma/client": "^4.8.1",
@@ -32,6 +33,7 @@
 		"@types/cookie": "^0.5.1",
 		"@types/jsonwebtoken": "^9.0.0",
 		"autoprefixer": "^10.4.13",
+		"cypress": "^12.3.0",
 		"postcss": "^8.4.20",
 		"prettier": "^2.8.1",
 		"prettier-plugin-tailwindcss": "^0.2.1",
